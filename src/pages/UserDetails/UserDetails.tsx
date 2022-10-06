@@ -71,7 +71,10 @@ export const UserDetails = () => {
               </td>
               <td>{usersGithub?.login}</td>
               <td>{usersGithub?.id}</td>
-              <td>{usersGithub?.created_at}</td>
+              <td>
+                {usersGithub?.created_at &&
+                  new Date(usersGithub?.created_at).toDateString()}
+              </td>
             </tr>
           </>
         </tbody>
