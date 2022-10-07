@@ -58,7 +58,7 @@ export const UserDetails = () => {
                 />
                 <Link to={`/details/${usersGithubInput}`}>
                   <LinkProfileHighlight type="submit">
-                    Pesquisar
+                    Search
                   </LinkProfileHighlight>
                 </Link>
               </form>
