@@ -18,13 +18,9 @@ interface GithubApi {
 export const ListUsers = () => {
   const [usersGithub, setUsersGithub] = useState<GithubApi[]>([])
   useEffect(() => {
-    axios
-      // .get('http://localhost:3333/api/users?since=10')
-      .get('https://app-api-github-arthur-art.herokuapp.com/api/users?since=20')
-      .then((response) => {
-        setUsersGithub(response.data)
-        console.log(response.data)
-      })
+    axios.get('https://api.github.com/users?per_page=100').then((response) => {
+      setUsersGithub(response.data)
+    })
   }, [])
 
   return (

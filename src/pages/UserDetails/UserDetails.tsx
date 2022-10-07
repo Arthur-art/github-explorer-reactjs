@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import {
+  InputUser,
   LinkProfileHighlight,
   TransactionsContainer,
   TransactionsTable,
@@ -24,32 +25,44 @@ interface GithubRepos {
 export const UserDetails = () => {
   const params = useParams()
   const [usersGithub, setUsersGithub] = useState<GithubApi>()
+  const [usersGithubInput, setUsersGithubInput] = useState('')
   const [reposGithub, setReposGithub] = useState<GithubRepos[]>()
   useEffect(() => {
     axios
-      // .get(`https://api.github.com/users/${params.user}`)
-      .get(
-        `https://app-api-github-arthur-art.herokuapp.com/api/users/${params.user}/details`,
-      )
+      .get(`https://api.github.com/users/${params.user}`)
       .then((response) => {
         setUsersGithub(response.data)
       })
     axios
-      // .get(`https://api.github.com/users/${params.user}/repos`)
-      .get(
-        `https://app-api-github-arthur-art.herokuapp.com/api/users/${params.user}/repos`,
-      )
+      .get(`https://api.github.com/users/${params.user}/repos`)
       .then((response) => {
         setReposGithub(response.data)
       })
-  }, [])
+  }, [params.user])
+
+  function inputUser(user: string) {
+    setUsersGithubInput(user)
+  }
 
   return (
     <TransactionsContainer>
       <TransactionsTable>
         <tbody>
           <tr>
-            <td></td>
+            <td>
+              <form action="#">
+                <InputUser
+                  type="text"
+                  placeholder="Pesquisar um novo usuário: arthur-art"
+                  onChange={({ target }) => inputUser(target.value)}
+                />
+                <Link to={`/details/${usersGithubInput}`}>
+                  <LinkProfileHighlight type="submit">
+                    Pesquisar
+                  </LinkProfileHighlight>
+                </Link>
+              </form>
+            </td>
             <td>Dashboard</td>
             <td>Login</td>
             <td>Id</td>

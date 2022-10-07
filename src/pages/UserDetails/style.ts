@@ -49,3 +49,15 @@ export const LinkProfileHighlight = styled.button`
     background: ${(props) => props.theme['green-700']};
   }
 `
+export const InputUser = styled.input`
+  flex: 1;
+  border-radius: 6px;
+  border: 0;
+  background: ${(props) => props.theme['gray-900']};
+  color: ${(props) => props.theme['gray-300']};
+  padding: 1rem;
+  margin-right: 1rem;
+  &::placeholder {
+    color: ${(props) => props.theme['gray-500']};
+  }
+`
