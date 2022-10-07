@@ -53,7 +53,7 @@ export const UserDetails = () => {
               <form action="#">
                 <InputUser
                   type="text"
-                  placeholder="Pesquisar um novo usuário: arthur-art"
+                  placeholder="Search for a user"
                   onChange={({ target }) => inputUser(target.value)}
                 />
                 <Link to={`/details/${usersGithubInput}`}>
