@@ -1,2 +1,3 @@
 # github-explorer-reactjs
-- Frontend consumindo a api do github
+- Frontend consuming github api
+- Link to the application: https://github-explorer-puce.vercel.app/
